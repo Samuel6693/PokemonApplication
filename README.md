@@ -8,7 +8,6 @@ Komponenter:
 <PokemonApplication>
 <Pokemon>
 
-
 1. Vid start av applikationen, ska användaren se en knapp med texten “Start Pokemon App”.
 
 2. Vid klick på knappen, ska <PokemonApplication> renderas i DOM:en.
