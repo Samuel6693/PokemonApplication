@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import PokemonApplication from './Components/PokemonApplication';
-import './App.css'
+import './App.css';
 
 function App() {
   const [isStarted, setIsStarted] = useState(false);
@@ -10,16 +10,18 @@ function App() {
   };
 
   return (
-    <>
-      <h1>Welcome to Your Pokemon App!</h1>
+    <div className="app">
+      <h1 className="app-title">Welcome to Your Pokemon App!</h1>
+
       {!isStarted ? (
-        <button onClick={handleStart}>Start Pokemon App</button>
+        <button className="primary-button" onClick={handleStart}>
+          Start Pokemon App
+        </button>
       ) : (
-        <PokemonApplication/>
+        <PokemonApplication />
       )}
-  
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
