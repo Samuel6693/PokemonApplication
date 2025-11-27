@@ -1,4 +1,5 @@
 const Pokemon = ({ pokemon }) => {
+  
   return (
     <div className="pokemon-card">
       <h2 className="pokemon-name">{pokemon.name}</h2>

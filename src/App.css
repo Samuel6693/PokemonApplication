@@ -48,6 +48,9 @@ body {
 
 /* PokemonApplication */
 .pokemon-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   max-width: 480px;
   background-color: #ffffff;

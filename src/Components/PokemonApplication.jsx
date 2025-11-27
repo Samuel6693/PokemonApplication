@@ -48,7 +48,7 @@ const PokemonApplication = () => {
         >
           <option value="">-- Select a Pokemon --</option>
           {pokemons.map((pokemon) => (
-            <option key={pokemon.name} value={pokemon.name}>
+            <option key={pokemon.name} value={pokemon.name}> 
               {pokemon.name}
             </option>
           ))}
