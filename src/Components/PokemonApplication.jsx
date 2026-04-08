@@ -35,10 +35,11 @@ const PokemonApplication = () => {
   };
 
   return (
-    <div className="pokemon-app">
-      <h2 className="section-title">Pokemon list</h2>
-
+    <section className="pokemon-app">
       <div className="controls">
+        <h2 className="section-title">Choose a Pokemon</h2>
+
+      
         <select
           name="pokemons"
           id="pokemons-dropdown"
@@ -46,7 +47,7 @@ const PokemonApplication = () => {
           onChange={(e) => setSelectedPokemon(e.target.value)}
           className="select"
         >
-          <option value="">-- Select a Pokemon --</option>
+          <option value="">Select a Pokemon</option>
           {pokemons.map((pokemon) => (
             <option key={pokemon.name} value={pokemon.name}> 
               {pokemon.name}
@@ -59,12 +60,14 @@ const PokemonApplication = () => {
           disabled={!selectedPokemon}
           className="primary-button"
         >
-          Get Pokemon data
+          View details
         </button>
       </div>
 
-      {pokemonDetails && <Pokemon pokemon={pokemonDetails} />}
-    </div>
+      <div className='results'>
+        {pokemonDetails && <Pokemon pokemon={pokemonDetails} />}
+      </div>
+    </section>
   );
 };
 
