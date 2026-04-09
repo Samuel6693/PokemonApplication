@@ -145,3 +145,17 @@ body {
   border: 1px solid #ddd;
   font-size: 0.85rem;
 }
+
+.status-message {
+  margin: 0;
+  padding: 1rem;
+  border-radius: 12pr;
+  background-color: #f8fafc;
+  color: #475569;
+  text-align: center;
+}
+
+.error-message {
+  background-color: #fef2f2;
+  color: #b91c1c
+}
