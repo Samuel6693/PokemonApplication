@@ -1,59 +1,27 @@
-import { useEffect, useState } from 'react';
-import Pokemon from './Pokemon';
+import { useState } from 'react';
+import Pokemon from './Pokemon.jsx';
+import { fetchPokemonDetails } from '../api/pokemon.js';
+import usePokemonList from '../hooks/usePokemonList.js';
 
 const PokemonApplication = () => {
-  const [pokemons, setPokemons] = useState([]);
+  const { pokemons, isLoading, error: listError } = usePokemonList();
   const [selectedPokemon, setSelectedPokemon] = useState('');
   const [pokemonDetails, setPokemonDetails] = useState(null);
-  const [isLoadingList, setIsLoadingList] = useState(true);
   const [isLoadingDetails, setIsLoadingDetails] = useState(false);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    const getPokemons = async () => {
-      try {
-        setIsLoadingList(true);
-        setError('');
-
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
-        
-        if (!response.ok) {
-          throw new Error('Could not fetch pokemon list');
-        }
-        
-        const json = await response.json();
-        setPokemons(json.results);
-      } catch (error) {
-        setError('Could not load Pokemon list. Please try again.');
-        console.error('Error fetching pokemon list:', error);
-      } finally {
-        setIsLoadingList(false);
-      }
-    };
-
-    getPokemons();
-  }, []);
+  const [detailsError, setDetailsError] = useState('');
 
   const handleClick = async () => {
     if (!selectedPokemon) return;
 
     try {
       setIsLoadingDetails(true);
-      setError('');
+      setDetailsError('');
       setPokemonDetails(null);
 
-      const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${selectedPokemon}`
-      );
-
-      if (!response.ok) {
-        throw new Error('Could not fetch pokemon details');
-      }
-
-      const data = await response.json();
+      const data = await fetchPokemonDetails(selectedPokemon);
       setPokemonDetails(data);
     } catch (error) {
-      setError('Could not load Pokemon details. Please try again.');
+      setDetailsError('Could not load Pokemon details. Please try again.');
       console.error('Error fetching pokemon details:', error);
     } finally {
       setIsLoadingDetails(false);
@@ -90,19 +58,25 @@ const PokemonApplication = () => {
       </div>
 
       <div className='results'>
-        {isLoadingList && <p className='status-message'>Loading Pokemon list...</p>}
+        {isLoading && <p className="status-message">Loading Pokemon list...</p>}
 
-        {isLoadingList && error && <p className='status-message error-message'>{error}</p>}
-
-        {isLoadingList && !error && isLoadingDetails && (
-          <p className='status-message'>Loading details...</p>
+        {!isLoading && listError && (
+          <p className="status-message error-message">{listError}</p>
         )}
 
-        {!isLoadingList && !error && !isLoadingDetails && !pokemonDetails && (
-          <p className='status-message'>Select a Pokemon to see details.</p>
+        {!isLoading && !listError && detailsError && (
+          <p className="status-message error-message">{detailsError}</p>
         )}
-        
-        {!isLoadingList && !error && pokemonDetails && (
+
+        {!isLoading && !listError && isLoadingDetails && (
+          <p className="status-message">Loading details...</p>
+        )}
+
+        {!isLoading && !listError && !detailsError && !isLoadingDetails && !pokemonDetails && (
+          <p className="status-message">Select a Pokemon to see details.</p>
+        )}
+
+        {!isLoading && !listError && !detailsError && pokemonDetails && (
           <Pokemon pokemon={pokemonDetails} />
         )}
       </div>

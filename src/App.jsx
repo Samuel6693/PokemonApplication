@@ -1,4 +1,4 @@
-import PokemonApplication from './Components/PokemonApplication';
+import PokemonApplication from './Components/PokemonApplication.jsx';
 import './App.css';
 
 function App() {
