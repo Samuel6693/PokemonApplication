@@ -1,27 +1,65 @@
-Övningsuppgift - Pokemon Application
+# Pokedex Explorer
 
-Er uppgift är att skapa ett gränssnitt där man kan få ut information om olika Pokemon.
-API Endpoint: https://pokeapi.co/api/v2/pokemon?limit=151
+A portfolio-focused React project built on top of the PokeAPI. The app lets users browse the original 151 Pokemon, narrow the list with search, and view a polished details card with artwork, types, abilities, height, weight, and base stats.
 
-Komponenter: 
-<App>
-<PokemonApplication>
-<Pokemon>
+## Overview
 
-1. Vid start av applikationen, ska användaren se en knapp med texten “Start Pokemon App”.
+This project started as a school assignment and was then improved to feel more like a finished product. Instead of only meeting the original brief, I focused on making the UI cleaner, the code structure easier to understand, and the experience more usable for someone seeing the app for the first time.
 
-2. Vid klick på knappen, ska <PokemonApplication> renderas i DOM:en.
+## Features
 
-3. När <PokemonApplication/> renderas, ska det göras ett anrop mot API:et för att hämta data för samtliga 151 Pokemon, och spara datat i state.
+- Browse the original 151 Pokemon from the Kanto generation
+- Search and filter the dropdown list in alphabetical order
+- View detailed Pokemon information in a polished card layout
+- See loading, error, and empty states for a more realistic UX
+- Use type-specific badges for clearer visual scanning
+- Benefit from in-memory caching for previously fetched Pokemon details
 
-4. I <PokemonApplication> ska ni sedan skapa dropdown-lista med samtliga namn på alla Pokemon som hämtats. Användaren ska kunna välja en Pokemon i dropdown-listan, och sedan klicka på knappen för att hämta data för sin valda Pokemon.
+## Tech Stack
 
-5. När användaren hämtar data för en Pokemon, rendera en <Pokemon>-komponent.
+- React
+- Vite
+- JavaScript
+- CSS
+- PokeAPI
 
-6. <Pokemon>-komponenten ska visa ut följande data för användarens val av Pokemon:
-- Namn
-- Bild på Pokemon
-- Typ/Typer din pokemon har (dvs “types” i API:et)
-- Vikt
-- Längd
+## Project Structure
+
+```text
+src/
+  api/
+    pokemon.js
+  hooks/
+    usePokemonList.js
+  Components/
+    Pokemon.jsx
+    PokemonApplication.jsx
+```
+
+## What I Improved
+
+- Redesigned the app so it feels more like a portfolio piece than a classroom exercise
+- Replaced the old single-path selection flow with search plus dropdown browsing
+- Added better spacing, colors, hover states, and mobile-friendly layout behavior
+- Moved API logic into a dedicated `api/` file
+- Moved list-fetching state into a reusable custom hook
+- Added caching for Pokemon detail requests to avoid unnecessary repeat fetches
+
+## Running Locally
+
+```bash
+npm install
+npm run dev
+```
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+## API
+
+Data is fetched from the [PokeAPI](https://pokeapi.co/), using the Pokemon endpoint for the original 151 Pokemon.
+
 
