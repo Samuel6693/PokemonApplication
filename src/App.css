@@ -7,32 +7,35 @@ body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     sans-serif;
-  background-color: linear-gradient(180deg, #f6f8fc 0%, #e9eef8 100%);
+background: linear-gradient(180deg, #3b82f6 0%, #93c5fd 55%, #fde68a 100%);
   color: #1f2937;
 }
 
 /* App-layout */
 .app {
   min-height: 100vh;
-  padding: 3rem 1rem;
+  padding: 4rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .app-title {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 3rem;
+  line-height: 1.2;
   text-align: center;
+  color: white;
 }
 
 .app-description {
   margin: 0;
   font-size: 1rem;
+  line-height: 1.5;
   text-align: center;
-  max-width: 540px;
-  color: #555;
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* PokemonApplication */
@@ -41,12 +44,12 @@ body {
   flex-direction: column;
   align-items: stretch;
   width: 100%;
-  max-width: 720px;
+  max-width: 760px;
   background-color: #ffffff;
-  border-radius: 20px;
+  border-radius: 26px;
   border: 1px solid #dbe3f0;
-  padding: 1.5rem;
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+  padding: 2rem;
+  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12);
   gap: 1.5rem;
 }
 
@@ -59,95 +62,121 @@ body {
 .controls {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
   align-items: stretch;
 }
 
 /* Dropdown */
 .select {
   padding: 0.8rem 1rem;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid #cbd5e1;
   min-width: 200px;
   font-size: 1rem;
   background-color: #fff;
+  color: #1f2937;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.18);
 }
 
 /* Knapp */
 .primary-button {
-  padding: 0.85rem 1rem;
-  border-radius: 12px;
+  padding: 0.95rem 1rem;
+  border-radius: 14px;
   border: none;
-  background-color: #2563eb;
+background: linear-gradient(135deg, #2563eb, #1d4ed8);
   color: #fff;
   cursor: pointer;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    filter 0.2s ease;
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.22);
+}
+
+.primary-button:not(:disabled):hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.primary-button:not(:disabled):active {
+  transform: translateY(0);
 }
 
 .primary-button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
-.primary-button:not(:disabled):hover {
-  filter: brightness(1.05);
+.primary-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.2);
 }
+
 
 .results {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   width: 100%;
 }
 
 /* Pokemon-kortet */
 .pokemon-card {
-  padding-top: 1rem;
-  border-top: 1px solid #e5e7eb;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
   text-align: center;
-  max-width: 520px;
+  max-width: 560px;
   margin: 0 auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-
 .pokemon-id {
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 0.4rem 0;
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   color: #64748b;
 }
 
 .pokemon-name {
-  margin: 0 0 0.75rem 0;
-  font-size: 1.8rem;
-  font-weight: 700;
+  margin: 0 0 1rem 0;
+  font-size: 2rem;
+  font-weight: 800;
   text-transform: capitalize;
-  color: #111827;
+  color: #0f172a;
 }
 
 .pokemon-image {
-  width: 220px;
-  height: 220px;
+  width: 240px;
+  height: 240px;
   object-fit: contain;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .pokemon-info {
-  margin-top: 0.75rem;
+  margin-top: 1rem;
   font-size: 0.95rem;
 }
 
 .pokemon-stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 
 .stat-box {
-  padding: 0.9rem;
-  border-radius: 14px;
+  padding: 1rem;
+  border-radius: 16px;
   background-color: #f8fafc;
   border: 1px solid #e2e8f0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .stat-box p {
@@ -159,8 +188,8 @@ body {
 
 .label {
   display: block;
-  margin-top: 1rem;
-  margin-bottom: 0.35rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
   font-weight: 700;
   color: #334155;
 }
@@ -178,13 +207,84 @@ body {
 .type-item {
   padding: 0.45rem 0.8rem;
   border-radius: 999px;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.4);
   font-size: 0.85rem;
   font-weight: 700;
   background-color: #dbeafe;
   color: #1d4ed8;
   text-transform: capitalize;
 }
+
+.type-fire {
+  background-color: #fed7aa;
+  color: #9a3412;
+}
+
+.type-water {
+  background-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+.type-grass {
+  background-color: #bbf7d0;
+  color: #15803d;
+}
+
+.type-electric {
+  background-color: #fef08a;
+  color: #a16207;
+}
+
+.type-poison {
+  background-color: #e9d5ff;
+  color: #7e22ce;
+}
+
+.type-flying {
+  background-color: #dbeafe;
+  color: #4338ca;
+}
+
+.type-bug {
+  background-color: #d9f99d;
+  color: #4d7c0f;
+}
+
+.type-normal {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.type-ground {
+  background-color: #fde68a;
+  color: #92400e;
+}
+
+.type-fairy {
+  background-color: #fbcfe8;
+  color: #be185d;
+}
+
+.type-psychic {
+  background-color: #fbcfe8;
+  color: #9d174d;
+}
+
+.type-rock {
+  background-color: #e7e5e4;
+  color: #57534e;
+}
+
+.type-ice {
+  background-color: #cffafe;
+  color: #0f766e;
+}
+
+.type-fighting {
+  background-color: #fecaca;
+  color: #991b1b;
+}
+
 
 .ability-list {
   list-style: none;
@@ -209,19 +309,19 @@ body {
 .stats-list {
   list-style: none;
   padding: 0;
-  margin: 0.75rem 0 0;
+  margin: 0.9rem 0 0;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.75rem;
 }
 
 .stats-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.85rem 1rem;
-  border-radius: 14px;
-  border: 1px solid #e2e8f0;
+  padding: 0.95rem 1rem;
+  border-radius: 16px;
+  border: 1px solid #dbe3f0;
 }
 
 .stat-name {

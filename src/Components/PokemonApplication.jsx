@@ -64,7 +64,6 @@ const PokemonApplication = () => {
     <section className="pokemon-app">
       <div className="controls">
         <h2 className="section-title">Choose a Pokemon</h2>
-
       
         <select
           name="pokemons"
