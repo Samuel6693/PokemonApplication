@@ -87,6 +87,23 @@ background: linear-gradient(180deg, #3b82f6 0%, #93c5fd 55%, #fde68a 100%);
   box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.18);
 }
 
+.search-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 14px;
+  border: 1px solid #cbd5e1;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #1f2937;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.18);
+}
+
 /* Knapp */
 .primary-button {
   padding: 0.95rem 1rem;

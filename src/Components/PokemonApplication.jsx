@@ -6,6 +6,7 @@ import usePokemonList from '../hooks/usePokemonList.js';
 const PokemonApplication = () => {
   const { pokemons, isLoading, error: listError } = usePokemonList();
   const [selectedPokemon, setSelectedPokemon] = useState('');
+  const [search, setSearch] = useState('');
   const [pokemonDetails, setPokemonDetails] = useState(null);
   const [isLoadingDetails, setIsLoadingDetails] = useState(false);
   const [detailsError, setDetailsError] = useState('');
@@ -28,11 +29,29 @@ const PokemonApplication = () => {
     }
   };
 
+  const filteredPokemons = pokemons
+  .filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(search.toLowerCase())
+  )
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+
   return (
     <section className="pokemon-app">
       <div className="controls">
         <h2 className="section-title">Choose a Pokemon</h2>
       
+        <input 
+          type='text' 
+          placeholder='Search Pokemon' 
+          value={search} 
+          onChange={(e) => setSearch(e.target.value)} 
+          className='search-input'/>
+
+        {search && filteredPokemons.length === 0 && (
+            <p className="status-message">No Pokemon found matching "{search}".</p>
+          )}
+
         <select
           name="pokemons"
           id="pokemons-dropdown"
@@ -40,8 +59,9 @@ const PokemonApplication = () => {
           onChange={(e) => setSelectedPokemon(e.target.value)}
           className="select"
         >
+
           <option value="">Select a Pokemon</option>
-          {pokemons.map((pokemon) => (
+          {filteredPokemons.map((pokemon) => (
             <option key={pokemon.name} value={pokemon.name}> 
               {pokemon.name}
             </option>
