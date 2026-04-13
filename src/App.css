@@ -68,16 +68,18 @@ background: linear-gradient(180deg, #3b82f6 0%, #93c5fd 55%, #fde68a 100%);
 
 /* Dropdown */
 .select {
+  width: 100%;
+  min-width: 0;
   padding: 0.8rem 1rem;
   border-radius: 14px;
   border: 1px solid #cbd5e1;
-  min-width: 200px;
   font-size: 1rem;
   background-color: #fff;
   color: #1f2937;
   transition: border-color 0.2s ease, box-shadow 0.2s ease,
     transform 0.2s ease;
 }
+
 
 .select:focus {
   outline: none;
@@ -146,10 +148,12 @@ background: linear-gradient(135deg, #2563eb, #1d4ed8);
 
 .pokemon-name {
   margin: 0 0 1rem 0;
-  font-size: 2rem;
+  font-size: clamp(1.75rem, 4vw, 2rem);
   font-weight: 800;
   text-transform: capitalize;
   color: #0f172a;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
 }
 
 .pokemon-image {
@@ -347,4 +351,36 @@ background: linear-gradient(135deg, #2563eb, #1d4ed8);
 .error-message {
   background-color: #fef2f2;
   color: #b91c1c
+}
+
+@media (max-width: 640px) {
+  .app {
+    padding:2.5rem 1rem;
+  }
+  .app-title {
+    font-size: 2.25rem;
+  }
+  .app-description {
+    font-size: 0.95rem;
+  }
+  .select {
+  width: 100%;
+  min-width: 0;
+  }
+  .pokemon-app {
+    padding: 1.25rem;
+    border-radius: 20px;
+  }
+  .pokemon-stats {
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  }
+  .pokemon-image {
+  width: 180px;
+  height: 180px;
+  }
+  .stats-item {
+  padding: 0.85rem 0.9rem;
+  }
+
 }
